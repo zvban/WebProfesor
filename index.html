@@ -3,70 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profesor - Aula Virtual</title>
+    <title>Profesor - Espacio Académico</title>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-    <header class="header">
-        <div class="contenedor">
-            <h1>Profesor</h1>
-            <p>Espacio de comunicación y material de clase</p>
+    <header class="hero">
+        <div class="linea-decorativa"></div>
+        <div class="hero-contenido">
+            <span class="numero-decorativo">01</span>
+            <h1 class="logo-texto">profesor<span></h1>
+            <h2 class="titulo-principal">AULA VIRTUAL Y CONTENIDOS</h2>
+            <p class="descripcion-hero">
+                Un espacio dedicado a la distribución de material de estudio, 
+                recursos audiovisuales de apoyo y canales directos de consulta para los alumnos.
+            </p>
+            <a href="#contacto" class="btn-scroll">Ver Contacto</a>
         </div>
     </header>
 
-    <main class="contenedor">
+    <main>
         
-        <section class="tarjeta contacto">
-            <h2>Contacto y Consultas</h2>
-            <p>Si tienes alguna duda con las tareas o la materia, puedes comunicarte por los siguientes medios:</p>
-            
-            <div class="info-contacto">
-                <p><strong>Correo Institucional:</strong> profesor@email.com</p>
-                
-                <a href="https://api.whatsapp.com/send?phone=5493704123456&text=Hola%20profesor,%20le%20escribo%20desde%20la%20página%20web." 
-                   target="_blank" 
-                   class="btn-wsp">
-                   Contactar por WhatsApp
-                </a>
+        <section class="seccion-oscura" id="info">
+            <div class="contenedor grid-dos-columnas">
+                <div class="columna-titulo">
+                    <h2 class="subtitulo-premium">SOBRE EL ESPACIO</h2>
+                </div>
+                <div class="columna-contenido">
+                    <h3>Facilitando el aprendizaje dinámico</h3>
+                    <p>
+                        Este sitio web fue diseñado para centralizar los recursos educativos. Aquí se recopilarán de forma permanente los enlaces oficiales de las clases y guías prácticas de estudio.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <section class="tarjeta videos">
-            <h2>Material Audiovisual</h2>
-            <p class="subtitulo-seccion">Aquí encontrarás los videos explicativos de las últimas clases:</p>
+        <section class="seccion-clara" id="contacto">
+            <div class="contenedor grid-dos-columnas">
+                <div class="columna-titulo">
+                    <h2 class="subtitulo-premium">CONTACTO</h2>
+                </div>
+                <div class="columna-contenido">
+                    <div class="bloque-contacto">
+                        <span class="etiqueta-pequeña">CANAL OFICIAL</span>
+                        <p class="correo-texto">profesor@email.com</p>
+                    </div>
+                    <div class="bloque-contacto">
+                        <span class="etiqueta-pequeña">ATENCIÓN RÁPIDA</span>
+                        <p class="descripcion-contacto">Para dudas específicas de trabajos prácticos, puedes iniciar un chat directo.</p>
+                        <a href="https://api.whatsapp.com/send?phone=5493704123456&text=Hola%20profesor,%20le%20escribo%20desde%20la%20página%20web." 
+                           target="_blank" 
+                           class="btn-wsp-premium">
+                           Iniciar Chat por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <div class="cuadrícula-videos">
+        <section class="seccion-oscura" id="videos">
+            <div class="contenedor">
+                <h2 class="subtitulo-premium alineado-izquierda">MATERIAL AUDIOVISUAL</h2>
+                <p class="descripcion-seccion">Videos sobre explicaciones complementarias.</p>
                 
-                <div class="tarjeta-video">
-                    <div class="miniatura-placeholder">
-                        <span>▶ Reproducir Video</span>
+                <div class="cuadrícula-premium-videos">
+                    
+                    <div class="item-video">
+                        <div class="imagen-placeholder">
+                            <span class="texto-placeholder">EJEMPLO</span>
+                        </div>
+                        <div class="info-premium-video">
+                            <span class="video-index">/ CLASE 01</span>
+                            <h3>Introducción al Año Lectivo</h3>
+                            <p>Análisis de los criterios de evaluación, presentación del programa de estudio y objetivos anuales.</p>
+                            <a href="#" class="link- premium-video">Ver Material →</a>
+                        </div>
                     </div>
-                    <div class="video-info">
-                        <h3>Clase 1: Introducción a la Materia</h3>
-                        <p>Breve repaso de los conceptos principales y los objetivos del trimestre.</p>
-                        <a href="#" class="btn-link">Ver material de apoyo</a>
-                    </div>
-                </div>
 
-                <div class="tarjeta-video">
-                    <div class="miniatura-placeholder">
-                        <span>▶ Reproducir Video</span>
+                    <div class="item-video">
+                        <div class="imagen-placeholder">
+                            <span class="texto-placeholder">EJEMPLO</span>
+                        </div>
+                        <div class="info-premium-video">
+                            <span class="video-index">/ CLASE 02</span>
+                            <h3>Resolución de Trabajos Prácticos</h3>
+                            <p>Explicación detallada de las consignas complejas del primer módulo práctico y guía de fuentes bibliográficas.</p>
+                            <a href="#" class="link-premium-video">Ver Material →</a>
+                        </div>
                     </div>
-                    <div class="video-info">
-                        <h3>Clase 2: Explicación del Trabajo Práctico</h3>
-                        <p>Guía paso a paso para resolver los ejercicios de la guía número 2.</p>
-                        <a href="#" class="btn-link">Ver material de apoyo</a>
-                    </div>
-                </div>
 
+                </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2026 - Aula Virtual del Profesor. Todos los derechos reservados.</p>
+    <footer class="footer-premium">
+        <div class="contenedor footer-grid">
+            <p class="footer-logo">profesor<span>.virtual</span></p>
+            <p class="copyright">&copy; 2026 - Aula Virtual Desarrollada con Cloudflare Pages. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
 </body>

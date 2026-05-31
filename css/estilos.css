@@ -1,154 +1,338 @@
-/* RESET DE ESTILOS BÁSICOS */
+/* RESET GENERAL DE ESTILOS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f6f9; /* Gris muy claro de fondo */
-    color: #333333;
-    line-height: 1.6;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #111111;
+    color: #ffffff;
+    line-height: 1.7;
+    letter-spacing: 0.5px;
 }
 
+/* CONTENEDOR FLUIDO */
 .contenedor {
-    width: 90%;
-    max-width: 1000px;
+    width: 88%;
+    max-width: 1100px;
     margin: 0 auto;
+    padding: 60px 0; /* Un poco menos de espacio vertical en móviles */
 }
 
-/* CABECERA (HEADER) */
-.header {
-    background-color: #1a365d; /* Azul oscuro institucional */
-    color: #ffffff;
-    padding: 40px 0;
-    text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 4px solid #2b6cb0;
+/* SECCIONES ALTERNADAS */
+.seccion-oscura {
+    background-color: #111111;
+    border-bottom: 1px solid #222222;
 }
 
-.header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+.seccion-clara {
+    background-color: #181818;
+    border-bottom: 1px solid #222222;
 }
 
-.header p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-}
-
-/* COMPONENTE GENERAL: TARJETAS */
-.tarjeta {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Sombra suave profesional */
-}
-
-.tarjeta h2 {
-    color: #1a365d;
-    margin-bottom: 15px;
-    font-size: 1.8rem;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 10px;
-}
-
-/* SECCIÓN CONTACTO */
-.info-contacto {
-    margin-top: 20px;
-}
-
-.info-contacto p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-}
-
-/* BOTÓN DE WHATSAPP */
-.btn-wsp {
-    display: inline-block;
-    background-color: #25D366; /* Verde oficial de WhatsApp */
-    color: #ffffff;
-    padding: 12px 24px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn-wsp:hover {
-    background-color: #128C7E; /* Verde más oscuro al pasar el mouse */
-    transform: translateY(-2px); /* Efecto sutil de subida */
-}
-
-/* SECCIÓN VIDEOS */
-.subtitulo-seccion {
-    margin-bottom: 25px;
-    color: #4a5568;
-}
-
-.cuadrícula-videos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Hace que sea responsivo */
-    gap: 20px;
-}
-
-.tarjeta-video {
-    background-color: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    overflow: hidden;
-    transition: transform 0.2s ease;
-}
-
-.tarjeta-video:hover {
-    transform: scale(1.02); /* Se agranda un poquito al pasar el mouse */
-}
-
-/* Simulador de miniatura de video */
-.miniatura-placeholder {
-    background-color: #2d3748; /* Fondo gris oscuro simulando video */
-    height: 180px;
+/* CABECERA / HERO SECTION (ADAPTADA A MÓVILES) */
+.hero {
+    position: relative;
+    min-height: 80vh; /* Se adapta mejor al alto de cualquier pantalla de celular */
+    background-color: #161616;
+    border-bottom: 1px solid #222222;
     display: flex;
-    justify-content: center;
     align-items: center;
+    padding: 40px 6%;
+}
+
+.linea-decorativa {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #c5a880;
+}
+
+.numero-decorativo {
+    display: block;
+    font-size: 3rem; /* Más chico en celulares para que no rompa el diseño */
+    font-weight: 300;
+    color: #c5a880;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: -5px;
+    opacity: 0.8;
+}
+
+.logo-texto {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #a0a0a0;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.logo-texto span {
+    color: #c5a880;
+}
+
+.titulo-principal {
+    font-size: 1.8rem; /* Tamaño ideal para pantallas angostas */
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    max-width: 700px;
+    margin-bottom: 20px;
     color: #ffffff;
-    font-weight: bold;
-    cursor: pointer;
+    line-height: 1.3;
 }
 
-.video-info {
-    padding: 20px;
+.descripcion-hero {
+    color: #a0a0a0;
+    max-width: 550px;
+    font-size: 1rem;
+    margin-bottom: 35px;
 }
 
-.video-info h3 {
-    font-size: 1.2rem;
-    color: #2b6cb0;
-    margin-bottom: 10px;
-}
-
-.video-info p {
-    font-size: 0.95rem;
-    color: #4a5568;
-    margin-bottom: 15px;
-}
-
-.btn-link {
-    color: #2b6cb0;
+.btn-scroll {
+    display: inline-block;
+    border: 1px solid #c5a880;
+    color: #ffffff;
     text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    padding: 12px 30px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-scroll:hover {
+    background-color: #c5a880;
+    color: #111111;
+}
+
+/* ESTRUCTURA BASE EN MÓVILES (UNA COLUMNA POR DEFECTO) */
+.grid-dos-columnas {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+.subtitulo-premium {
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c5a880;
     font-weight: 600;
 }
 
-.btn-link:hover {
-    text-decoration: underline;
+.columna-contenido h3 {
+    font-size: 1.35rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: #ffffff;
 }
 
-/* PIE DE PÁGINA (FOOTER) */
-.footer {
+.columna-contenido p {
+    color: #a0a0a0;
+    font-size: 0.95rem;
+}
+
+/* SECCIÓN CONTACTO */
+.bloque-contacto {
+    margin-bottom: 35px;
+}
+
+.bloque-contacto:last-child {
+    margin-bottom: 0;
+}
+
+.etiqueta-pequeña {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #c5a880;
+    margin-bottom: 6px;
+}
+
+.correo-texto {
+    font-size: 1.4rem; /* Evita que el correo largo se corte al borde de la pantalla */
+    font-weight: 300;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    word-break: break-all; /* Seguridad extra por si el mail es muy largo */
+}
+
+.descripcion-contacto {
+    color: #a0a0a0;
+    margin-bottom: 20px;
+}
+
+/* BOTÓN WHATSAPP */
+.btn-wsp-premium {
+    display: block; /* Ocupa todo el ancho en celulares, más fácil de tocar */
     text-align: center;
-    padding: 30px 0;
-    color: #718096;
+    background-color: transparent;
+    color: #c5a880;
+    border: 1px solid #c5a880;
+    padding: 14px 25px; /* Un poco más de área táctil */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-wsp-premium:hover {
+    background-color: #c5a880;
+    color: #111111;
+}
+
+/* SECCIÓN VIDEOS */
+.descripcion-seccion {
+    color: #a0a0a0;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.cuadrícula-premium-videos {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna en pantallas chicas */
+    gap: 25px;
+}
+
+.item-video {
+    background-color: #161616;
+    border: 1px solid #222222;
+}
+
+.imagen-placeholder {
+    background-color: #252525;
+    height: 180px; /* Reducido para que no ocupe toda la pantalla del móvil */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #222222;
+}
+
+.texto-placeholder {
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    color: #555555;
+    font-weight: 700;
+}
+
+.info-premium-video {
+    padding: 20px;
+}
+
+.video-index {
+    display: block;
+    font-size: 0.7rem;
+    color: #c5a880;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.info-premium-video h3 {
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+}
+
+.info-premium-video p {
     font-size: 0.9rem;
-    margin-top: 50px;
+    color: #a0a0a0;
+    margin-bottom: 15px;
+}
+
+.link-premium-video {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* FOOTER */
+.footer-premium {
+    background-color: #0d0d0d;
+    border-top: 1px solid #222222;
+}
+
+.footer-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footer-logo {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    color: #a0a0a0;
+}
+
+.footer-logo span {
+    color: #c5a880;
+}
+
+.copyright {
+    color: #555555;
+    font-size: 0.75rem;
+}
+
+
+/* ==========================================================================
+   MEDIA QUERIES: AQUÍ SE ACTIVA EL DISEÑO PARA MONITORES Y PANTALLAS GRANDES
+   ========================================================================== */
+@media (min-width: 768px) {
+    .contenedor {
+        padding: 80px 0;
+    }
+
+    .hero {
+        height: 90vh;
+        padding-left: 6%;
+    }
+
+    .numero-decorativo {
+        font-size: 4rem;
+    }
+
+    .titulo-principal {
+        font-size: 2.5rem;
+    }
+
+    /* Cambia a estructura de dos columnas de la imagen original */
+    .grid-dos-columnas {
+        grid-template-columns: 140px 1fr;
+        gap: 60px;
+    }
+
+    .btn-wsp-premium {
+        display: inline-block; /* Deja de ocupar todo el ancho */
+    }
+
+    /* La cuadrícula de videos vuelve a dividirse en columnas paralelas */
+    .cuadrícula-premium-videos {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+    }
+
+    .imagen-placeholder {
+        height: 220px;
+    }
+
+    .footer-grid {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
 }
