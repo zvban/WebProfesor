@@ -1,0 +1,154 @@
+/* RESET DE ESTILOS BÁSICOS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9; /* Gris muy claro de fondo */
+    color: #333333;
+    line-height: 1.6;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* CABECERA (HEADER) */
+.header {
+    background-color: #1a365d; /* Azul oscuro institucional */
+    color: #ffffff;
+    padding: 40px 0;
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 4px solid #2b6cb0;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* COMPONENTE GENERAL: TARJETAS */
+.tarjeta {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Sombra suave profesional */
+}
+
+.tarjeta h2 {
+    color: #1a365d;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+/* SECCIÓN CONTACTO */
+.info-contacto {
+    margin-top: 20px;
+}
+
+.info-contacto p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+/* BOTÓN DE WHATSAPP */
+.btn-wsp {
+    display: inline-block;
+    background-color: #25D366; /* Verde oficial de WhatsApp */
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-wsp:hover {
+    background-color: #128C7E; /* Verde más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Efecto sutil de subida */
+}
+
+/* SECCIÓN VIDEOS */
+.subtitulo-seccion {
+    margin-bottom: 25px;
+    color: #4a5568;
+}
+
+.cuadrícula-videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Hace que sea responsivo */
+    gap: 20px;
+}
+
+.tarjeta-video {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.tarjeta-video:hover {
+    transform: scale(1.02); /* Se agranda un poquito al pasar el mouse */
+}
+
+/* Simulador de miniatura de video */
+.miniatura-placeholder {
+    background-color: #2d3748; /* Fondo gris oscuro simulando video */
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.video-info {
+    padding: 20px;
+}
+
+.video-info h3 {
+    font-size: 1.2rem;
+    color: #2b6cb0;
+    margin-bottom: 10px;
+}
+
+.video-info p {
+    font-size: 0.95rem;
+    color: #4a5568;
+    margin-bottom: 15px;
+}
+
+.btn-link {
+    color: #2b6cb0;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+/* PIE DE PÁGINA (FOOTER) */
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    color: #718096;
+    font-size: 0.9rem;
+    margin-top: 50px;
+}
