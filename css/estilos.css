@@ -199,7 +199,13 @@ body {
     margin-bottom: 30px;
     font-size: 0.95rem;
 }
-
+/* Por defecto: Medida para CELULARES */
+.item-video iframe {
+    width: 100%;
+    height: 180px; /* Altura más chica para que encaje bien en el celular */
+    border: none;
+    display: block;
+}
 .cuadrícula-premium-videos {
     display: grid;
     grid-template-columns: 1fr; /* Una columna en pantallas chicas */
@@ -319,6 +325,10 @@ body {
     .btn-wsp-premium {
         display: inline-block; /* Deja de ocupar todo el ancho */
     }
+    .item-video iframe {
+        height: 220px; /* Se agranda en la PC para hacer juego con el diseño original */
+    }
+
 
     /* La cuadrícula de videos vuelve a dividirse en columnas paralelas */
     .cuadrícula-premium-videos {
