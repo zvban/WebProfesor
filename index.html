@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profesor - Espacio Académico</title>
+    <title>Jorge Barrionuevo - Espacio Académico</title>
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" type="image/png" href="img/logoprofesor.png">
+    <script src="js/carrito.js"></script>
 </head>
 <body>
 
@@ -23,7 +25,6 @@
     </header>
 
     <main>
-        
         <section class="seccion-oscura" id="info">
             <div class="contenedor grid-dos-columnas">
                 <div class="columna-titulo">
@@ -38,38 +39,25 @@
             </div>
         </section>
 
-        <section class="seccion-clara" id="videos">
+        <!-- NUEVA SECCIÓN DE TIENDA -->
+        <section class="seccion-clara" id="tienda">
             <div class="contenedor">
-                <h2 class="subtitulo-premium alineado-izquierda">MATERIAL AUDIOVISUAL</h2>
-                <p class="descripcion-seccion">Videos sobre explicaciones complementarias.</p>
-                
-                <div class="cuadrícula-premium-videos">
-                    
-                    <div class="item-video">
-                        <div class="info-premium-video">
-                            <iframe src="https://www.youtube.com/embed/Os0rWvg_nu4?si=tsXGB4A_KE7Tz_Sc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <span class="video-index">/ CLASE 01</span>
-                            <h3>Como eliminar FONDO en Photoshop</h3>
-                            <p>En el video te enseña paso a paso como eliminar un fondo correctamente sin arrores de color.</p>
-                            <a href="https://www.youtube.com/watch?v=Os0rWvg_nu4" class="link-premium-video">Ver Material →</a>
-                        </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                    <div>
+                        <h2 class="subtitulo-premium alineado-izquierda">COLECCIÓN EXCLUSIVA</h2>
+                        <p class="descripcion-seccion">Libretas artesanales con diseños únicos e irrepetibles.</p>
                     </div>
-
-                    <!-- <div class="item-video">
-                        <div class="imagen-placeholder">
-                            <span class="texto-placeholder">EJEMPLO</span>
-                        </div>
-                        <div class="info-premium-video">
-                            <span class="video-index">/ CLASE 02</span>
-                            <h3>Resolución de Trabajos Prácticos</h3>
-                            <p>Explicación detallada de las consignas complejas del primer módulo práctico y guía de fuentes bibliográficas.</p>
-                            <a href="#" class="link-premium-video">Ver Material →</a>
-                        </div>
-                    </div> -->
-
+                    <!-- BOTÓN PARA ABRIR EL CARRITO -->
+                    <button class="btn-carrito-vistas" onclick="alternarCarrito()">
+                        CARRITO (<span id="contador-recuento">0</span>)
+                    </button>
                 </div>
+                
+                <!-- Aquí JavaScript inyectará las libretas desde tu servidor Node -->
+                <div class="cuadrícula-premium-videos" id="contenedor-productos"></div>
             </div>
         </section>
+
         <section class="seccion-oscura" id="contacto">
             <div class="contenedor grid-dos-columnas">
                 <div class="columna-titulo">
@@ -92,6 +80,27 @@
                 </div>
             </div>
         </section>
+
+        <!-- VENTANA FLOTANTE DEL CARRITO (OCULTA POR DEFECTO) -->
+        <div id="carrito-flotante" class="carrito-panel">
+            <div class="carrito-header">
+                <h3>TU PEDIDO</h3>
+                <button class="btn-cerrar" onclick="alternarCarrito()">✕</button>
+            </div>
+            <div id="carrito-items" class="carrito-items-lista">
+                <!-- Se llena con JS -->
+            </div>
+            <div class="carrito-footer">
+                <div class="total-contenedor">
+                    <span>TOTAL:</span>
+                    <span id="carrito-total">$0</span>
+                </div>
+                <!-- BOTÓN PARA ENVIAR COMPRA AL BACKEND -->
+                <button class="btn-wsp-premium" style="width: 100%;" onclick="procesarCompraEnBackend()">
+                    PAGAR CON MERCADO PAGO
+                </button>
+            </div>
+        </div>
     </main>
 
     <footer class="footer-premium">

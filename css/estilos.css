@@ -346,3 +346,155 @@ body {
         text-align: left;
     }
 }
+/* ==========================================================================
+   ESTILOS DEL CARRITO FLOTANTE
+   ========================================================================== */
+.btn-carrito-vistas {
+    background: transparent;
+    border: 1px solid #c5a880;
+    color: #c5a880;
+    padding: 10px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-carrito-vistas:hover {
+    background: #c5a880;
+    color: #111111;
+}
+
+.carrito-panel {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    background: #161616;
+    border-left: 1px solid #222222;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.4s cubic-bezier(0.05, 0.74, 0.2, 1);
+}
+
+.carrito-panel.activo {
+    right: 0;
+}
+
+.carrito-header {
+    padding: 25px;
+    border-bottom: 1px solid #222222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.carrito-header h3 {
+    color: #c5a880;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+}
+
+.btn-cerrar {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.carrito-items-lista {
+    padding: 25px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.item-carrito-render {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #222222;
+    padding-bottom: 15px;
+}
+
+.item-carrito-info h4 {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.item-carrito-info span {
+    color: #c5a880;
+    font-size: 0.9rem;
+}
+
+.btn-eliminar-item {
+    background: transparent;
+    border: none;
+    color: #ff5555;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.carrito-footer {
+    padding: 25px;
+    border-top: 1px solid #222222;
+    background: #111111;
+}
+
+.total-contenedor {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+#carrito-total {
+    color: #c5a880;
+}
+
+.btn-agotado {
+    display: block;
+    width: 100%;
+    background: #222222;
+    color: #555555;
+    border: 1px solid #333333;
+    padding: 12px;
+    text-align: center;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: not-allowed;
+}
+
+.contenedor-foto-producto {
+    width: 100%;
+    height: 180px; /* Misma altura en móvil */
+    overflow: hidden;
+    border-bottom: 1px solid #222222;
+}
+
+.foto-producto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que la foto se adapte sin estirarse ni deformarse */
+    transition: transform 0.4s ease;
+}
+
+/* Efecto premium: cuando pasan el mouse por la tarjeta, la foto se acerca un poquito */
+.item-video:hover .foto-producto {
+    transform: scale(1.05);
+}
+
+/* Ajuste para pantallas grandes (PC) */
+@media (min-width: 768px) {
+    .contenedor-foto-producto {
+        height: 220px;
+    }
+}
