@@ -1,7 +1,12 @@
 let productos = [];
 let carrito = JSON.parse(localStorage.getItem("carrito_libretas")) || [];
 
-// 1. OBTENER PRODUCTOS DEL BACKEND EN VIVO
+// Iniciar al cargar
+window.onload = () => {
+    obtenerProductosDelServidor();
+};
+
+// 1. OBTENER PRODUCTOS DEL BACKEND
 async function obtenerProductosDelServidor() {
     try {
         const respuesta = await fetch('https://api-libretas.onrender.com/api/productos');
@@ -11,7 +16,6 @@ async function obtenerProductosDelServidor() {
         renderizarCarrito();
     } catch (error) {
         console.error("Error al conectar con el backend:", error);
-        alert("No se pudo cargar el catálogo de libretas en vivo. ¿Prendiste el backend?");
     }
 }
 
@@ -19,28 +23,25 @@ async function obtenerProductosDelServidor() {
 function renderizarProductosEnTienda() {
     const contenedor = document.getElementById("contenedor-productos");
     if (!contenedor) return;
-    contenedor.innerHTML = "";
+    contenedor.innerHTML = ""; 
 
-    productos.forEach(prod => {
+    productos.forEach((prod, index) => {
         const estaAgotado = prod.stock === 0;
-                
+        const numero = (index + 1).toString().padStart(2, '0');
+
         contenedor.innerHTML += `
-            <div class="item-video">
-                <div class="contenedor-foto-producto">
-                    <img src="${prod.imagen}" alt="${prod.titulo}" class="foto-producto">
+            <div class="item-servicio">
+                <span class="numero-decorativo">${numero}</span>
+                <h3>${prod.titulo}</h3>
+                <p>${prod.descripcion}</p>
+                <div class="precio-stock">
+                    <span style="color:#ffffff;">$${prod.precio}</span> | 
+                    <span>${estaAgotado ? "Agotado" : "Disponibles: " + prod.stock}</span>
                 </div>
-                
-                <div class="info-premium-video">
-                    <span class="video-index">/ DISPONIBLE: ${prod.stock} U.</span>
-                    <h3>${prod.titulo}</h3>
-                    <p>${prod.descripcion}</p>
-                    <span class="video-index" style="font-size: 1.1rem; margin-bottom: 15px;">$${prod.precio}</span>
-                    
-                    ${estaAgotado 
-                        ? `<button class="btn-agotado">Agotado</button>`
-                        : `<button class="btn-wsp-premium" style="width:100%; text-align:center;" onclick="agregarAlCarrito(${prod.id})">Añadir al Carrito</button>`
-                    }
-                </div>
+                <button class="${estaAgotado ? 'btn-agotado' : 'btn-carrito'}" 
+                        ${estaAgotado ? 'disabled' : `onclick="agregarAlCarrito(${prod.id})"`}>
+                    ${estaAgotado ? "Agotado" : "Añadir al Carrito"}
+                </button>
             </div>
         `;
     });
@@ -55,13 +56,12 @@ function agregarAlCarrito(id) {
         if (itemEnCarrito.cantidad < producto.stock) {
             itemEnCarrito.cantidad++;
         } else {
-            alert("Disculpas, no hay más stock disponible de este diseño.");
+            alert("Disculpas, no hay más stock disponible.");
             return;
         }
     } else {
         carrito.push({ ...producto, cantidad: 1 });
     }
-
     guardarYRenderizar();
 }
 
@@ -76,16 +76,44 @@ function guardarYRenderizar() {
     renderizarCarrito();
 }
 
-function alternarCarrito() {
-    document.getElementById("carrito-flotante").classList.toggle("activo");
-}
-
+// 4. ACTUALIZACIÓN AUTOMÁTICA DEL CONTADOR
 function actualizarContadores() {
     const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
     const contadorElemento = document.getElementById("contador-recuento");
-    if(contadorElemento) contadorElemento.innerText = totalItems;
+    
+    if(contadorElemento) {
+        contadorElemento.innerText = totalItems;
+        // La burbuja se oculta si es 0
+        contadorElemento.style.display = totalItems > 0 ? "inline-block" : "none";
+    }
 }
 
+// 5. REDIRECCIÓN A WHATSAPP
+function enviarPedidoWhatsApp() {
+    if (carrito.length === 0) {
+        alert("Tu carrito está vacío.");
+        return;
+    }
+
+    let mensaje = "¡Hola! Quiero realizar el siguiente pedido:%0A%0A";
+    let total = 0;
+
+    carrito.forEach(item => {
+        mensaje += `- ${item.titulo} (Cant: ${item.cantidad}) - $${item.precio * item.cantidad}%0A`;
+        total += (item.precio * item.cantidad);
+    });
+
+    mensaje += `%0A*Total del pedido: $${total}*`;
+    mensaje += `%0A%0A¿Podrían confirmarme la disponibilidad?`;
+
+    // REEMPLAZA POR TU NÚMERO (Formato internacional, ej: 5493704123456)
+    const numeroWhatsApp = "5493704307901"; 
+    const url = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+    
+    window.open(url, '_blank');
+}
+
+// 6. RENDERIZAR CARRITO Y BOTÓN WSP
 function renderizarCarrito() {
     const contenedorItems = document.getElementById("carrito-items");
     const contenedorTotal = document.getElementById("carrito-total");
@@ -107,50 +135,12 @@ function renderizarCarrito() {
         `;
     });
 
-    contenedorTotal.innerText = `$${total}`;
+    contenedorTotal.innerHTML = `
+        <p>Total: $${total}</p>
+        <button class="btn-action-wsp" onclick="enviarPedidoWhatsApp()">Realizar Pedido por WhatsApp</button>
+    `;
 }
 
-// 4. CONEXIÓN CON EL BACKEND PARA PAGAR
-async function procesarCompraEnBackend() {
-    if (carrito.length === 0) {
-        alert("El carrito está vacío.");
-        return;
-    }
-
-    try {
-        // Le enviamos el carrito a tu servidor de Node.js
-        const respuesta = await fetch('https://api-libretas.onrender.com/api/comprar', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ itemsCarrito: carrito })
-        });
-
-        const datos = await respuesta.json();
-
-        if (!respuesta.ok) {
-            // Si el backend rechaza la compra (ej: alguien más compró la libreta)
-            alert(datos.error);
-            // Actualizamos la tienda en vivo para mostrar qué se agotó
-            obtenerProductosDelServidor(); 
-            return;
-        }
-
-        // Si todo está perfecto, el servidor nos devuelve el Link de Mercado Pago
-        alert(`¡Ticket ${datos.ticket} generado! Redirigiendo a Mercado Pago...`);
-        
-        // Vaciamos el carrito local porque ya se confirmó el inicio de pago
-        carrito = [];
-        localStorage.removeItem("carrito_libretas");
-        guardarYRenderizar();
-
-        // Mandamos al usuario a pagar
-        window.location.href = datos.init_point;
-
-    } catch (error) {
-        console.error("Error al procesar el pago:", error);
-        alert("Hubo un problema de conexión con el servidor de pagos.");
-    }
+function alternarCarrito() {
+    document.getElementById("carrito-flotante").classList.toggle("activo");
 }
-
-// Iniciar al cargar
-window.onload = obtenerProductosDelServidor;

@@ -3,110 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jorge Barrionuevo - Espacio Académico</title>
+    <title>Curso Multimedia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="icon" type="image/png" href="img/logoprofesor.png">
-    <script src="js/carrito.js"></script>
+    <script src="js/carrito.js" defer></script>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="linea-decorativa"></div>
-        <div class="hero-contenido">
-            <span class="numero-decorativo">01</span>
-            <h1 class="logo-texto">profesor - Jorge Barrionuevo<span></h1>
-            <h2 class="titulo-principal">AULA VIRTUAL Y CONTENIDOS</h2>
-            <p class="descripcion-hero">
-                Un espacio dedicado a la distribución de material de estudio, 
-                recursos audiovisuales de apoyo y canales directos de consulta para los alumnos.
-            </p>
-            <a href="#contacto" class="btn-scroll">Ver Contacto</a>
-        </div>
+    <header class="hero-section">
+        <button class="btn-abrir-carrito-flotante" onclick="alternarCarrito()">
+            🛒 <span id="contador-recuento">0</span>
+        </button>
+        <nav class="navbar">
+            <div class="nav-links">
+                <a href="#info">INFORMACIÓN</a>
+                <a href="#servicios">CATALOGO</a>
+                <a href="#contacto">CONTACTO</a>
+            </div>
+        </nav>
+            <h1 class="main-logo-title">CURSO MULTIMEDIA</h1>
+            <div class="hero-footer-info">
+            </div>
     </header>
 
-    <main>
-        <section class="seccion-oscura" id="info">
-            <div class="contenedor grid-dos-columnas">
-                <div class="columna-titulo">
-                    <h2 class="subtitulo-premium">SOBRE EL ESPACIO</h2>
-                </div>
-                <div class="columna-contenido">
-                    <h3>Facilitando el aprendizaje dinámico</h3>
-                    <p>
-                        Este sitio web fue diseñado para centralizar los recursos educativos. Aquí se recopilarán de forma permanente los enlaces oficiales de las clases y guías prácticas de estudio.
-                    </p>
+    <main class="main-content">
+        
+        <section class="info-intro-section" id="info">
+            <div class="container-premium">
+                <div class="info-grid">
+                    <div class="info-title-col">
+                        <span class="section-tag">/ INFORMACIÓN</span>
+                        <h2>SOBRE EL ESPACIO</h2>
+                    </div>
+                    <div class="info-text-col">
+                        <h3>PAGINA DEL CURSO MULTIMEDIA DE LA EPET-10</h3>
+                        <p>Bienvenido al espacio oficial de creación multimedia de la EPET N° 10 de Formosa. Este sitio fue creado para exhibir el potencial y la calidad técnica de nuestros estudiantes en el desarrollo de imágenes y videos profesionales. Aquí, la formación técnica se transforma en soluciones visuales pensadas para destacar. Todo lo que ves es fruto de nuestro trabajo constante, y nuestro objetivo es claro: compartir nuestra visión creativa contigo. Explora nuestro catálogo y, si encuentras algo que te inspire, puedes adquirir nuestros diseños directamente. Gracias por apoyar el futuro de la industria multimedia local.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- NUEVA SECCIÓN DE TIENDA -->
-        <section class="seccion-clara" id="tienda">
-            <div class="contenedor">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
-                    <div>
-                        <h2 class="subtitulo-premium alineado-izquierda">COLECCIÓN EXCLUSIVA</h2>
-                        <p class="descripcion-seccion">Libretas artesanales con diseños únicos e irrepetibles.</p>
-                    </div>
-                    <!-- BOTÓN PARA ABRIR EL CARRITO -->
-                    <button class="btn-carrito-vistas" onclick="alternarCarrito()">
-                        CARRITO (<span id="contador-recuento">0</span>)
-                    </button>
-                </div>
+        <section class="seccion-oscura" id="servicios">
+            <div class="container-premium">
+                <h2 class="section-tag">Nuestra coleción</h2>
+                <h2 class="block-main-title">Catálogo de Libretas</h2>
                 
-                <!-- Aquí JavaScript inyectará las libretas desde tu servidor Node -->
-                <div class="cuadrícula-premium-videos" id="contenedor-productos"></div>
+                <div id="contenedor-productos" class="cuadrícula-premium-servicios">
+                    </div>
             </div>
         </section>
 
-        <section class="seccion-oscura" id="contacto">
-            <div class="contenedor grid-dos-columnas">
-                <div class="columna-titulo">
-                    <h2 class="subtitulo-premium">CONTACTO</h2>
-                </div>
-                <div class="columna-contenido">
-                    <div class="bloque-contacto">
-                        <span class="etiqueta-pequeña">CANAL OFICIAL</span>
-                        <p class="correo-texto">profesor@email.com</p>
+        <section class="contacto-section" id="contacto">
+            <div class="container-premium">
+                <div class="info-grid">
+                    <div class="info-title-col">
+                        <span class="section-tag">/ CONTÁCTANOS</span>
+                        <h2 style="font-size: 2rem; font-weight: 700;">CONTACTO</h2>
                     </div>
-                    <div class="bloque-contacto">
-                        <span class="etiqueta-pequeña">ATENCIÓN RÁPIDA</span>
-                        <p class="descripcion-contacto">Para dudas específicas de trabajos prácticos, puedes iniciar un chat directo.</p>
-                        <a href="https://api.whatsapp.com/send?phone=5493704592282&text=Hola%20profesor,%20le%20escribo%20desde%20la%20página%20web." 
-                           target="_blank" 
-                           class="btn-wsp-premium">
-                           Iniciar Chat por WhatsApp
-                        </a>
+                    <div class="info-text-col">
+                        <div class="contact-block-minimal">
+                            <span>CANAL OFICIAL</span>
+                            <p class="contact-email">profesor@email.com</p>
+                        </div>
+                        <div class="contact-block-minimal" style="margin-top: 30px;">
+                            <span>ATENCIÓN RÁPIDA</span>
+                            <p style="color: #a2adb9; margin-bottom: 20px;">Para dudas específicas de trabajos prácticos, puedes iniciar un chat directo.</p>
+                            <a href="https://api.whatsapp.com/send?phone=5493704592282&text=Hola%20profesor,%20le%20escribo%20desde%20la%20página%20web." target="_blank" class="btn-action-wsp">
+                                Iniciar Chat por WhatsApp
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- VENTANA FLOTANTE DEL CARRITO (OCULTA POR DEFECTO) -->
         <div id="carrito-flotante" class="carrito-panel">
             <div class="carrito-header">
                 <h3>TU PEDIDO</h3>
                 <button class="btn-cerrar" onclick="alternarCarrito()">✕</button>
             </div>
             <div id="carrito-items" class="carrito-items-lista">
-                <!-- Se llena con JS -->
-            </div>
+                </div>
             <div class="carrito-footer">
                 <div class="total-contenedor">
-                    <span>TOTAL:</span>
                     <span id="carrito-total">$0</span>
                 </div>
-                <!-- BOTÓN PARA ENVIAR COMPRA AL BACKEND -->
-                <button class="btn-wsp-premium" style="width: 100%;" onclick="procesarCompraEnBackend()">
-                    PAGAR CON MERCADO PAGO
-                </button>
             </div>
         </div>
     </main>
 
-    <footer class="footer-premium">
-        <div class="contenedor footer-grid">
-            <p class="footer-logo">profesor<span>.virtual</span></p>
-            <p class="copyright">&copy; 2026 - Aula Virtual Desarrollada con Cloudflare Pages. Todos los derechos reservados.</p>
+    <footer class="glasshaven-footer">
+        <div class="container-premium footer-flex-box">
+            <p class="f-logo">profesor<span>.virtual</span></p>
+            <p class="f-copy">&copy; 2026 - Aula Virtual Desarrollada con Cloudflare Pages. Todos los derechos reservados.</p>
         </div>
     </footer>
 
