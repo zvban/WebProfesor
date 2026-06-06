@@ -19,7 +19,7 @@ async function obtenerProductosDelServidor() {
     }
 }
 
-// 2. RENDERIZAR TIENDA
+// 2. RENDERIZAR TIENDA (Actualizado para el CSS Premium)
 function renderizarProductosEnTienda() {
     const contenedor = document.getElementById("contenedor-productos");
     if (!contenedor) return;
@@ -28,20 +28,29 @@ function renderizarProductosEnTienda() {
     productos.forEach((prod, index) => {
         const estaAgotado = prod.stock === 0;
         const numero = (index + 1).toString().padStart(2, '0');
+        
+        // Verifica cómo se llama la propiedad de tu imagen en el backend. 
+        // Asumí que es prod.imagen. Si no hay imagen, pone un espacio gris.
+        const urlImagen = prod.imagen ? prod.imagen : 'https://via.placeholder.com/400?text=Sin+Imagen';
 
         contenedor.innerHTML += `
             <div class="item-servicio">
-                <span class="numero-decorativo">${numero}</span>
-                <h3>${prod.titulo}</h3>
-                <p>${prod.descripcion}</p>
-                <div class="precio-stock">
-                    <span style="color:#ffffff;">$${prod.precio}</span> | 
-                    <span>${estaAgotado ? "Agotado" : "Disponibles: " + prod.stock}</span>
+                <div class="img-producto-contenedor">
+                    <img src="${urlImagen}" alt="${prod.titulo}">
                 </div>
-                <button class="${estaAgotado ? 'btn-agotado' : 'btn-carrito'}" 
-                        ${estaAgotado ? 'disabled' : `onclick="agregarAlCarrito(${prod.id})"`}>
-                    ${estaAgotado ? "Agotado" : "Añadir al Carrito"}
-                </button>
+                <div class="item-servicio-contenido">
+                    <span class="numero-decorativo">${numero}</span>
+                    <h3>${prod.titulo}</h3>
+                    <p style="color: #c7d2de; font-size: 0.9rem; margin-bottom: 10px;">${prod.descripcion}</p>
+                    <div class="precio-stock">
+                        <span style="color:#ffffff;">$${prod.precio}</span> | 
+                        <span>${estaAgotado ? "Agotado" : "Disponibles: " + prod.stock}</span>
+                    </div>
+                    <button class="${estaAgotado ? 'btn-agotado' : 'btn-carrito'}" 
+                            ${estaAgotado ? 'disabled' : `onclick="agregarAlCarrito(${prod.id})"`}>
+                        ${estaAgotado ? "Agotado" : "Añadir al Carrito"}
+                    </button>
+                </div>
             </div>
         `;
     });
@@ -106,7 +115,6 @@ function enviarPedidoWhatsApp() {
     mensaje += `%0A*Total del pedido: $${total}*`;
     mensaje += `%0A%0A¿Podrían confirmarme la disponibilidad?`;
 
-    // REEMPLAZA POR TU NÚMERO (Formato internacional, ej: 5493704123456)
     const numeroWhatsApp = "5493704307901"; 
     const url = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
     
@@ -136,8 +144,13 @@ function renderizarCarrito() {
     });
 
     contenedorTotal.innerHTML = `
-        <p>Total: $${total}</p>
-        <button class="btn-action-wsp" onclick="enviarPedidoWhatsApp()">Realizar Pedido por WhatsApp</button>
+        <div style="width: 100%;">
+            <div style="display:flex; justify-content:space-between; margin-bottom: 20px;">
+                <span>Total:</span>
+                <span>$${total}</span>
+            </div>
+            <button class="btn-action-wsp" onclick="enviarPedidoWhatsApp()" style="width: 100%;">Realizar Pedido</button>
+        </div>
     `;
 }
 

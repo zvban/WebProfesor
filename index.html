@@ -13,25 +13,19 @@
 </head>
 <body>
 
-    <header class="hero-section">
-        <button class="btn-abrir-carrito-flotante" onclick="alternarCarrito()">
-            🛒 <span id="contador-recuento">0</span>
-        </button>
+    <header class="hero-section glass-panel scroll-animate">
         <nav class="navbar">
             <div class="nav-links">
                 <a href="#info">INFORMACIÓN</a>
-                <a href="#servicios">CATALOGO</a>
+                <a href="#servicios">CATÁLOGO</a>
                 <a href="#contacto">CONTACTO</a>
             </div>
         </nav>
-            <h1 class="main-logo-title">CURSO MULTIMEDIA</h1>
-            <div class="hero-footer-info">
-            </div>
+        <h1 class="main-logo-title">CURSO MULTIMEDIA</h1>
     </header>
 
     <main class="main-content">
-        
-        <section class="info-intro-section" id="info">
+        <section class="info-intro-section glass-panel scroll-animate" id="info">
             <div class="container-premium">
                 <div class="info-grid">
                     <div class="info-title-col">
@@ -39,24 +33,23 @@
                         <h2>SOBRE EL ESPACIO</h2>
                     </div>
                     <div class="info-text-col">
-                        <h3>PAGINA DEL CURSO MULTIMEDIA DE LA EPET-10</h3>
+                        <h3>PÁGINA DEL CURSO MULTIMEDIA DE LA EPET-10</h3>
                         <p>Bienvenido al espacio oficial de creación multimedia de la EPET N° 10 de Formosa. Este sitio fue creado para exhibir el potencial y la calidad técnica de nuestros estudiantes en el desarrollo de imágenes y videos profesionales. Aquí, la formación técnica se transforma en soluciones visuales pensadas para destacar. Todo lo que ves es fruto de nuestro trabajo constante, y nuestro objetivo es claro: compartir nuestra visión creativa contigo. Explora nuestro catálogo y, si encuentras algo que te inspire, puedes adquirir nuestros diseños directamente. Gracias por apoyar el futuro de la industria multimedia local.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="seccion-oscura" id="servicios">
+        <section class="seccion-oscura glass-panel scroll-animate" id="servicios">
             <div class="container-premium">
-                <h2 class="section-tag">Nuestra coleción</h2>
+                <span class="section-tag">Nuestra colección</span>
                 <h2 class="block-main-title">Catálogo de Libretas</h2>
                 
-                <div id="contenedor-productos" class="cuadrícula-premium-servicios">
-                    </div>
+                <div id="contenedor-productos" class="cuadricula-premium-servicios"></div>
             </div>
         </section>
 
-        <section class="contacto-section" id="contacto">
+        <section class="contacto-section glass-panel scroll-animate" id="contacto">
             <div class="container-premium">
                 <div class="info-grid">
                     <div class="info-title-col">
@@ -70,8 +63,8 @@
                         </div>
                         <div class="contact-block-minimal" style="margin-top: 30px;">
                             <span>ATENCIÓN RÁPIDA</span>
-                            <p style="color: #a2adb9; margin-bottom: 20px;">Para dudas específicas de trabajos prácticos, puedes iniciar un chat directo.</p>
-                            <a href="https://api.whatsapp.com/send?phone=5493704592282&text=Hola%20profesor,%20le%20escribo%20desde%20la%20página%20web." target="_blank" class="btn-action-wsp">
+                            <p style="color: #c7d2de; margin-bottom: 20px;">Para dudas específicas de trabajos prácticos, puedes iniciar un chat directo.</p>
+                            <a href="https://api.whatsapp.com/send?phone=5493704307901&text=Hola%20profesor,%20le%20escribo%20desde%20la%20página%20web." target="_blank" class="btn-action-wsp">
                                 Iniciar Chat por WhatsApp
                             </a>
                         </div>
@@ -85,22 +78,39 @@
                 <h3>TU PEDIDO</h3>
                 <button class="btn-cerrar" onclick="alternarCarrito()">✕</button>
             </div>
-            <div id="carrito-items" class="carrito-items-lista">
-                </div>
+            <div id="carrito-items" class="carrito-items-lista"></div>
             <div class="carrito-footer">
-                <div class="total-contenedor">
-                    <span id="carrito-total">$0</span>
-                </div>
+                <div class="total-contenedor" id="carrito-total">
+                    </div>
             </div>
         </div>
     </main>
 
-    <footer class="glasshaven-footer">
+    <footer class="glasshaven-footer glass-panel scroll-animate">
         <div class="container-premium footer-flex-box">
             <p class="f-logo">profesor<span>.virtual</span></p>
             <p class="f-copy">&copy; 2026 - Aula Virtual Desarrollada con Cloudflare Pages. Todos los derechos reservados.</p>
         </div>
     </footer>
 
+    <button class="btn-abrir-carrito-flotante" onclick="alternarCarrito()">
+        🛒 <span id="contador-recuento" style="display: none;">0</span>
+    </button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const paneles = document.querySelectorAll('.scroll-animate');
+            const observerOptions = { root: null, rootMargin: "0px", threshold: 0.12 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            paneles.forEach(panel => observer.observe(panel));
+        });
+    </script>
 </body>
 </html>
