@@ -17,24 +17,38 @@
         <form id="formulario-producto">
             <div style="margin-bottom: 10px;">
                 <label>Título del producto:</label><br>
-                <input type="text" id="cms-titulo" required style="width: 100%; padding: 8px;">
+                <input type="text" id="cms-titulo" required style="width: 100%; padding: 8px; box-sizing: border-box;">
             </div>
             <div style="margin-bottom: 10px;">
                 <label>Descripción:</label><br>
-                <textarea id="cms-descripcion" required style="width: 100%; padding: 8px;"></textarea>
+                <textarea id="cms-descripcion" required style="width: 100%; padding: 8px; box-sizing: border-box;"></textarea>
             </div>
             <div style="margin-bottom: 10px;">
                 <label>Precio ($):</label><br>
-                <input type="number" id="cms-precio" required style="width: 100%; padding: 8px;">
+                <input type="number" id="cms-precio" required style="width: 100%; padding: 8px; box-sizing: border-box;">
             </div>
-            <div style="margin-bottom: 15px;">
+            <div style="margin-bottom: 10px;">
                 <label>Stock inicial:</label><br>
-                <input type="number" id="cms-stock" required style="width: 100%; padding: 8px;">
+                <input type="number" id="cms-stock" required style="width: 100%; padding: 8px; box-sizing: border-box;">
             </div>
-            <button type="submit" style="background: #28a745; color: white; border: none; padding: 10px 15px; cursor: pointer; width: 100%;">
+            
+            <div style="margin-bottom: 15px;">
+                <label>Enlace de la Imagen (ImgBB):</label><br>
+                <input type="url" id="cms-imagen" placeholder="https://i.ibb.co/xxxx/foto.jpg" required style="width: 100%; padding: 8px; box-sizing: border-box;">
+            </div>
+
+            <button type="submit" style="background: #28a745; color: white; border: none; padding: 10px 15px; cursor: pointer; width: 100%; font-weight: bold; border-radius: 4px;">
                 Guardar Producto en el Servidor
             </button>
         </form>
+    </div>
+
+    <div style="max-width: 500px; margin: 30px auto; padding: 20px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px;">
+        <h3 style="margin-top: 0; color: #333; border-bottom: 2px solid #28a745; padding-bottom: 8px;">Productos en Catálogo</h3>
+        
+        <div id="lista-productos-admin">
+            <p style="color: #666; font-style: italic;">Cargando productos...</p>
+        </div>
     </div>
 
     <script src="js/admin.js"></script>
