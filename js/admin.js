@@ -9,35 +9,54 @@ document.addEventListener("DOMContentLoaded", () => {
         formulario.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            // Capturamos los valores usando tus IDs exactos de admin.html
-            const titulo = document.getElementById("cms-titulo").value;
+            // 1. CAPTURAR EL TÍTULO NUEVO (y sacarle espacios extra en las puntas)
+            const titulo = document.getElementById("cms-titulo").value.trim();
+
+            // 2. CANDADO ANTI-DUPLICADOS DE NOMBRE:
+            const listaAdmin = document.getElementById("lista-productos-admin");
+            if (listaAdmin) {
+                // Agarramos todos los textos en negrita (los títulos) de tu catálogo actual
+                const titulosExistentes = Array.from(listaAdmin.querySelectorAll("strong"))
+                    .map(el => el.innerText.trim().toLowerCase());
+
+                // Si el nombre que escribiste ya existe (sin importar mayúsculas o minúsculas)
+                if (titulosExistentes.includes(titulo.toLowerCase())) {
+                    alert(`El producto "${titulo}" ya existe en el catálogo. Usá un nombre diferente.`);
+                    return; // 🛑 Frenamos por completo la ejecución acá
+                }
+            }
+
+            // 3. CANDADO ANTI-DOBLE CLIC (Congelamos el botón mientras viaja la petición)
+            const botonGuardar = formulario.querySelector("button[type='submit']");
+            if (botonGuardar) {
+                botonGuardar.disabled = true;
+                botonGuardar.innerText = "Guardando producto...";
+            }
+
             const descripcion = document.getElementById("cms-descripcion").value;
             const precio = document.getElementById("cms-precio").value;
             const stock = document.getElementById("cms-stock").value;
-            const imagen = document.getElementById("cms-imagen").value; 
+            let imagen = document.getElementById("cms-imagen").value.trim(); 
 
-            // Armamos el objeto JSON limpio para enviar
-            const datosProducto = {
-                titulo: titulo,
-                descripcion: descripcion,
-                precio: precio,
-                stock: stock,
-                imagen: imagen
-            };
+            // 🛠️ TRUCO MÁGICO: Si pegás el link de la página, lo transformamos en una URL compatible
+            if (imagen.includes("ibb.co/") && !imagen.includes("i.ibb.co")) {
+                const codigoImagen = imagen.split("ibb.co/")[1];
+                imagen = `https://i.ibb.co/${codigoImagen}/image.png`;
+            }
+
+            const datosProducto = { titulo, descripcion, precio, stock, imagen };
 
             try {
                 const respuesta = await fetch(API_URL, {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
+                    headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(datosProducto)
                 });
 
                 if (respuesta.ok) {
                     alert("¡Diseño exclusivo guardado con éxito! 🚀");
                     formulario.reset();
-                    obtenerProductos(); // Recarga la lista de abajo automáticamente
+                    obtenerProductos(); // Recarga la lista automáticamente abajo
                 } else {
                     const errorData = await respuesta.json();
                     alert(`Error del servidor: ${errorData.error}`);
@@ -45,6 +64,12 @@ document.addEventListener("DOMContentLoaded", () => {
             } catch (error) {
                 console.error("Error en la petición POST:", error);
                 alert("No se pudo conectar con el servidor.");
+            } finally {
+                // 🛠️ SE DESCONGELA EL BOTÓN: Pase lo que pase (éxito o error), vuelve a estar activo
+                if (botonGuardar) {
+                    botonGuardar.disabled = false;
+                    botonGuardar.innerText = "Guardar Producto en el Servidor";
+                }
             }
         });
     }
@@ -76,13 +101,15 @@ function mostrarProductosAdmin(productos) {
         return;
     }
 
-    listaAdmin.innerHTML = "";
+    listaAdmin.innerHTML = ""; // Limpiamos la lista para evitar duplicaciones visuales
 
     productos.forEach(prod => {
+        // Corregido el fallback de la imagen con un cuadro SVG seguro en vez del placeholder externo roto
         listaAdmin.innerHTML += `
             <div class="item-admin" style="display: flex; justify-content: space-between; margin-bottom: 12px; align-items: center; padding: 10px; border-bottom: 1px solid #ddd; background: #fff; border-radius: 6px;">
                 <div style="display: flex; align-items: center; gap: 12px;">
-                    <img src="${prod.imagen}" style="width: 45px; height: 45px; object-fit: cover; border-radius: 4px; border: 1px solid #ccc;" onerror="this.src='https://via.placeholder.com/45?text=Error'">
+                    <img src="${prod.imagen}" style="width: 45px; height: 45px; object-fit: cover; border-radius: 4px; border: 1px solid #ccc; background: #eee;" 
+                         onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'45\' height=\'45\'><rect width=\'45\' height=\'45\' fill=\'%23eee\'/><text x=\'50%\' y=\'55%\' font-size=\'10\' text-anchor=\'middle\' fill=\'%23999\'>Sin foto</text></svg>';">
                     <span style="color: #333;"><strong>${prod.titulo}</strong> - $${prod.precio} (Stock: ${prod.stock})</span>
                 </div>
                 <button onclick="eliminarProducto('${prod._id}')" style="background-color: #ff4d4d; color: white; border: none; padding: 6px 14px; cursor: pointer; border-radius: 4px; font-weight: bold;">
