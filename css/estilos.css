@@ -23,16 +23,17 @@
 
 html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
     background-image: url('../img/fondo.webp'); 
-    background-size: cover;       
+    background-size: cover;          
     background-position: center;   
     background-repeat: no-repeat;  
     background-attachment: fixed;  
     min-height: 100vh;
-    margin: 0;
     font-family: 'Space Grotesk', sans-serif;
     color: var(--text-main);
     overflow-x: hidden;
@@ -63,15 +64,15 @@ body {
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
     border-radius: 24px; 
-    margin: 20px auto; /* Reducido para móvil */
-    width: 95%; /* Más ancho en móvil */
+    margin: 20px auto;
+    width: 95%;
     max-width: 1200px;
     overflow: hidden;
 }
 
 .container-premium {
     width: 100%;
-    padding: 40px 20px; /* Reducido para móvil */
+    padding: 40px 20px;
 }
 
 .block-main-title {
@@ -217,8 +218,8 @@ body {
    ========================================================================== */
 .cuadricula-premium-servicios {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 COLUMNAS EN MÓVIL */
-    gap: 15px; /* Brecha reducida */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px; 
     margin-top: 30px;
 }
 
@@ -243,10 +244,12 @@ body {
 
 .img-producto-contenedor {
     width: 100%;
-    aspect-ratio: 1 / 1; 
+    /* CAMBIO CLAVE: Proporción rectangular para libretas en lugar de un cuadrado perfecto */
+    aspect-ratio: 4 / 5; 
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
 }
 
 .img-producto-contenedor img {
@@ -259,17 +262,17 @@ body {
 
 .item-servicio:hover .img-producto-contenedor img {
     transform: scale(1.06); 
-} 
+}
 
 .item-servicio-contenido {
-    padding: 15px; /* Reducido para celular */
+    padding: 15px;
     display: flex;
     flex-direction: column;
     flex-grow: 1; 
 }
 
 .item-servicio .numero-decorativo {
-    font-size: 1.3rem; /* Más chico en celular */
+    font-size: 1.3rem; 
     color: var(--accent-gold);
     font-family: 'Times New Roman', serif;
     margin-bottom: 5px;
@@ -277,14 +280,14 @@ body {
 }
 
 .item-servicio h3 {
-    font-size: 0.9rem; /* Título más chico en celular */
+    font-size: 0.9rem;
     margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .precio-stock {
-    font-size: 0.8rem; /* Precio más chico en celular */
+    font-size: 0.8rem; 
     color: var(--text-muted);
     margin-bottom: 15px;
 }
@@ -294,12 +297,12 @@ body {
     background: transparent;
     border: 1px solid var(--accent-gold);
     color: var(--accent-gold);
-    padding: 8px 10px; /* Botón más compacto */
+    padding: 8px 10px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 0.7rem; /* Letra de botón más chica */
+    font-size: 0.7rem; 
     letter-spacing: 1px;
     transition: all 0.3s;
     width: 100%;
@@ -487,7 +490,6 @@ body {
    MEDIA QUERIES (ESCRITORIO Y TABLETS GRANDES)
    ========================================================================== */
 @media (min-width: 768px) {
-    /* Restaurar márgenes y paddings de PC */
     .hero-section {
     height: 55vh;
     }
@@ -521,7 +523,6 @@ body {
         text-align: left;
     }
 
-    /* Restaurar el Catálogo a PC (Auto-fill y tarjetas grandes) */
     .cuadricula-premium-servicios {
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
         gap: 30px;

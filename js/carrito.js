@@ -6,16 +6,42 @@ window.onload = () => {
     obtenerProductosDelServidor();
 };
 
-// 1. OBTENER PRODUCTOS DEL BACKEND
+// 1. OBTENER PRODUCTOS DEL BACKEND CON ESTADO DE CARGA
 async function obtenerProductosDelServidor() {
+    const contenedor = document.getElementById("contenedor-productos");
+    if (!contenedor) return;
+
+    // Mostrar mensaje de carga
+    contenedor.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted);">
+            <p>Cargando catálogo, por favor espera...</p>
+        </div>
+    `;
+
     try {
         const respuesta = await fetch('https://api-libretas.onrender.com/api/productos');
+        
+        if (!respuesta.ok) throw new Error("Error en la respuesta del servidor");
+        
         productos = await respuesta.json();
-        renderizarProductosEnTienda();
+        
+        // Si no hay productos, mostramos un aviso
+        if (productos.length === 0) {
+            contenedor.innerHTML = `<p style="color: var(--text-muted);">No hay productos disponibles por el momento.</p>`;
+        } else {
+            renderizarProductosEnTienda();
+        }
+
         actualizarContadores();
         renderizarCarrito();
+        
     } catch (error) {
         console.error("Error al conectar con el backend:", error);
+        contenedor.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #ff6b6b;">
+                <p>Error al cargar el catálogo. Intenta nuevamente más tarde.</p>
+            </div>
+        `;
     }
 }
 
@@ -47,7 +73,7 @@ function renderizarProductosEnTienda() {
                         <span>${estaAgotado ? "Agotado" : "Disponibles: " + prod.stock}</span>
                     </div>
                     <button class="${estaAgotado ? 'btn-agotado' : 'btn-carrito'}" 
-                            ${estaAgotado ? 'disabled' : `onclick="agregarAlCarrito(${prod.id})"`}>
+                            ${estaAgotado ? 'disabled' : `onclick="agregarAlCarrito('${prod._id}')"`}>
                         ${estaAgotado ? "Agotado" : "Añadir al Carrito"}
                     </button>
                 </div>
@@ -58,8 +84,15 @@ function renderizarProductosEnTienda() {
 
 // 3. LÓGICA DEL CARRITO
 function agregarAlCarrito(id) {
-    const producto = productos.find(p => p.id === id);
-    const itemEnCarrito = carrito.find(item => item.id === id);
+    console.log("ID recibido:", id); // Depuración: mira en consola si el ID llega bien
+    
+    const producto = productos.find(p => p._id === id);
+    if (!producto) {
+        console.error("Producto no encontrado con el ID:", id);
+        return;
+    }
+
+    const itemEnCarrito = carrito.find(item => item._id === id);
 
     if (itemEnCarrito) {
         if (itemEnCarrito.cantidad < producto.stock) {
@@ -138,7 +171,7 @@ function renderizarCarrito() {
                     <h4>${item.titulo}</h4>
                     <span>${item.cantidad}x - $${item.precio}</span>
                 </div>
-                <button class="btn-eliminar-item" onclick="eliminarDelCarrito(${item.id})">Quitar</button>
+                <button class="btn-eliminar-item" onclick="eliminarDelCarrito('${item._id}')">Quitar</button>
             </div>
         `;
     });
