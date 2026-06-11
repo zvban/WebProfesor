@@ -2,14 +2,16 @@
    VARIABLES DE COLOR BASADAS EN TU IMAGEN
    ========================================================================== */
 :root {
-    --accent-gold: #e2b45b; 
+    --accent-gold: #e2b45b;
     --accent-hover: #f3c773;
+
     --text-main: #ffffff;
-    --text-muted: #c7d2de; 
-    
-    --glass-bg: rgba(15, 15, 20, 0.65); 
-    --glass-border: rgba(255, 255, 255, 0.08); 
-    --glass-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); 
+    --text-muted: #b8b8b8;
+
+    /* Paneles en negro/gris oscuro */
+    --glass-bg: rgba(20, 20, 20, 0.92);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
 }
 
 /* ==========================================================================
@@ -25,18 +27,26 @@ html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #202020;
 }
 
 body {
-    background-image: url('../img/fondo.webp'); 
-    background-size: cover;          
-    background-position: center;   
-    background-repeat: no-repeat;  
-    background-attachment: fixed;  
+    background-color: #202020;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
     min-height: 100vh;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     color: var(--text-main);
     overflow-x: hidden;
+}
+
+.bbh-bartle-regular {
+  font-family: "BBH Bartle", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* ==========================================================================
@@ -104,9 +114,14 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 30px 40px;
+    padding: 20px 20px;
     position: relative;
-    background: linear-gradient(180deg, rgba(15,15,20,0.8) 0%, rgba(15,15,20,0.4) 50%, rgba(15,15,20,0.8) 100%);
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(10, 10, 10, 0.75) 50%,
+        rgba(0, 0, 0, 0.95) 100%
+    );
 }
 
 .navbar {
@@ -135,7 +150,7 @@ body {
 }
 
 .main-logo-title {
-    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-size: clamp(1.5rem, 5vw, 6.5rem);
     font-weight: 700;
     letter-spacing: -2px;
     text-align: center;
@@ -224,16 +239,16 @@ body {
 }
 
 .item-servicio {
-    background: rgba(10, 10, 12, 0.4);
+    background: rgba(18, 18, 18, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
-    overflow: hidden; 
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    max-width: 320px; 
+    max-width: 320px;
     width: 100%;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 .item-servicio:hover {
@@ -397,12 +412,12 @@ body {
     width: 100%;
     max-width: 450px;
     height: 100vh;
-    background: rgba(10, 10, 12, 0.85);
+    background: rgba(15, 15, 15, 0.97);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     border-left: 1px solid var(--glass-border);
-    box-shadow: -10px 0 40px rgba(0,0,0,0.7);
-    z-index: 100000; 
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.7);
+    z-index: 100000;
     display: flex;
     flex-direction: column;
     transition: right 0.4s cubic-bezier(0.05, 0.74, 0.2, 1);
@@ -475,7 +490,7 @@ body {
 .carrito-footer {
     padding: 30px;
     border-top: 1px solid var(--glass-border);
-    background: rgba(0,0,0,0.3);
+    background: rgba(25, 25, 25, 0.95);
 }
 
 .total-contenedor {

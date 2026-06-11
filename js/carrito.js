@@ -108,7 +108,7 @@ function agregarAlCarrito(id) {
 }
 
 function eliminarDelCarrito(id) {
-    carrito = carrito.filter(item => item.id !== id);
+    carrito = carrito.filter(item => item._id !== id);
     guardarYRenderizar();
 }
 
