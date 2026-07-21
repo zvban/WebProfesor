@@ -2,119 +2,256 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="theme-color" content="#0f0f14">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=BBH+Bartle&display=swap" rel="stylesheet">
-    <title>Curso Multimedia</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Luciano Sosa - Editor de Video</title>
     <link rel="stylesheet" href="css/estilos.css">
-    <link rel="icon" type="image/png" href="img/logoprofesor.png">
-    <script src="js/carrito.js" defer></script>
+    <script src="js/js.js"></script>
+    <link rel="icon" type="image/png" href="img/Logo.png">
 </head>
 <body>
 
-    <header class="hero-section glass-panel scroll-animate">
-        <nav class="navbar">
-            <div class="nav-links">
-                <a href="#info">INFORMACIÓN</a>
-                <a href="#servicios">CATÁLOGO</a>
-                <a href="#contacto">CONTACTO</a>
-            </div>
+    <!-- Fondos con Blobs -->
+    <div class="bg-blobs">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
+    <!-- Header / Navegación -->
+    <header class="header">
+    <div class="nav-container">
+        <a href="#" class="logo">ZVBN</a>
+        <nav class="nav-menu">
+            <a href="#hero">Inicio</a>
+            <a href="#works">Trabajos</a>
+            <a href="#software">Herramientas</a>
+            <a href="#contact">Contacto</a>
         </nav>
-        <h1 class="main-logo-title bbh-bartle-regular">CURSO MULTIMEDIA</h1>
-    </header>
+    </div>
+</header>
 
-    <main class="main-content">
-        <section class="info-intro-section glass-panel scroll-animate" id="info">
-            <div class="container-premium">
-                <div class="info-grid">
-                    <div class="info-title-col">
-                        <span class="section-tag">/ INFORMACIÓN</span>
-                        <h2>SOBRE EL ESPACIO</h2>
-                    </div>
-                    <div class="info-text-col">
-                        <h3>PÁGINA DEL CURSO MULTIMEDIA DE LA EPET-10</h3>
-                        <p>Bienvenido al espacio oficial de creación multimedia de la EPET N° 10 de Formosa. Este sitio fue creado para exhibir el potencial y la calidad técnica de nuestros estudiantes en el desarrollo de imágenes y videos profesionales. Aquí, la formación técnica se transforma en soluciones visuales pensadas para destacar. Todo lo que ves es fruto de nuestro trabajo constante, y nuestro objetivo es claro: compartir nuestra visión creativa contigo. Explora nuestro catálogo y, si encuentras algo que te inspire, puedes adquirir nuestros diseños directamente. Gracias por apoyar el futuro de la industria multimedia local.</p>
-                    </div>
+    <!-- SECCIÓN 1: HERO -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-left">
+                <span class="hero-badge">
+                    Disponible para trabajar
+                </span>
+
+                <h1>
+                    LUCIANO <br>
+                    <span>SOSA</span>
+                </h1>
+
+                <h2>Editor de Video</h2>
+
+                <p>
+                    Edición de video profesional para marcas,
+                    creadores de contenido y empresas que
+                    buscan captar la atención desde el primer segundo.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#works" class="btn-primary">
+                        Ver Trabajos
+                    </a>
+
+                    <a href="#contact" class="btn-secondary">
+                        Contacto
+                    </a>
                 </div>
             </div>
-        </section>
 
-        <section class="seccion-oscura glass-panel scroll-animate" id="servicios">
-            <div class="container-premium">
-                <span class="section-tag">Nuestra colección</span>
-                <h2 class="block-main-title">Catálogo de Libretas</h2>
-                
-                <div id="contenedor-productos" class="cuadricula-premium-servicios"></div>
+            <div class="hero-right">
+                <img src="img/Luciano.jpg" alt="Luciano">
             </div>
-        </section>
+        </div>
 
-        <section class="contacto-section glass-panel scroll-animate" id="contacto">
-            <div class="container-premium">
-                <div class="info-grid">
-                    <div class="info-title-col">
-                        <span class="section-tag">/ CONTÁCTANOS</span>
-                        <h2 style="font-size: 2rem; font-weight: 700;">CONTACTO</h2>
-                    </div>
-                    <div class="info-text-col">
-                        <div class="contact-block-minimal">
-                            <span>CANAL OFICIAL</span>
-                            <p class="contact-email">profesor@email.com</p>
-                        </div>
-                        <div class="contact-block-minimal" style="margin-top: 30px;">
-                            <span>ATENCIÓN RÁPIDA</span>
-                            <p style="color: #c7d2de; margin-bottom: 20px;">Para dudas específicas de trabajos prácticos, puedes iniciar un chat directo.</p>
-                            <a href="https://api.whatsapp.com/send?phone=5493704307901&text=Hola%20profesor,%20le%20escribo%20desde%20la%20página%20web." target="_blank" class="btn-action-wsp">
-                                Iniciar Chat por WhatsApp
-                            </a>
-                        </div>
+    </section>
+
+    <!-- SECCIÓN 2: WORKS (PORTFOLIO) -->
+    <section class="works" id="works">
+        <div class="section-header">
+            <span class="section-badge">
+                Portfolio
+            </span>
+            <h2>
+                Trabajos Destacados
+            </h2>
+        </div>
+
+        <div class="projects-grid">
+
+            <!-- Tarjeta del proyecto con el link de YouTube Short adaptado a embed -->
+            <article class="portfolio-card" data-video="https://www.youtube.com/embed/JR9vTfj0Jpk">
+
+                <img src="img/Short1.png" alt="Short de Edición para Reels">
+
+                <div class="card-info">
+                    <h3>Edición para Reels</h3>
+                    <p>Videos pensados para maximizar la retención con subtítulos dinámicos, efectos de sonido y ritmo rápido.</p>
+
+                    <div class="tags">
+                        <span>Premiere Pro</span>
                     </div>
                 </div>
-            </div>
-        </section>
+            </article>
 
-        <div id="carrito-flotante" class="carrito-panel">
-            <div class="carrito-header">
-                <h3>TU PEDIDO</h3>
-                <button class="btn-cerrar" onclick="alternarCarrito()">✕</button>
-            </div>
-            <div id="carrito-items" class="carrito-items-lista"></div>
-            <div class="carrito-footer">
-                <div class="total-contenedor" id="carrito-total">
+            <article class="portfolio-card" data-video="https://www.youtube.com/embed/psDSUeOACr8">
+
+                <img src="img/Short2.png" alt="Podcast Premium">
+
+                <div class="card-info">
+                    <h3>Podcast Premium</h3>
+                    <p>Resalta los mejores momentos de tus entrevistas con edición dinámica, efectos visuales y un ritmo que engancha a toda la audiencia.</p>
+
+                    <div class="tags">
+                        <span>Premiere Pro</span>
+                        <span>After Effects</span>
                     </div>
+                </div>
+            </article>
+
+<!-- Modal único para toda la página -->
+<div class="modal" id="videoModal">
+    <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <iframe
+            id="videoFrame"
+            src=""
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+            <!-- <article class="project-card">
+                <div class="project-image">
+                    <img src="img/work3.jpg" alt="Gaming Highlights">
+                </div>
+                <div class="project-content">
+                    <span class="project-number">03</span>
+                    <h3>Gaming Highlights</h3>
+                    <p>
+                        Montaje dinámico con memes,
+                        transiciones y efectos cinematográficos.
+                    </p>
+                    <div class="project-tags">
+                        <span>Gaming</span>
+                        <span>Twitch</span>
+                        <span>YouTube</span>
+                    </div>
+                </div>
+            </article> -->
+        </div>
+    </section>
+    <section class="software-section" id="software">
+
+    <div class="section-header">
+
+        <span class="section-badge">
+            Software
+        </span>
+
+        <h2>Las herramientas que utilizo</h2>
+
+        <p class="section-description">
+            Trabajo con herramientas profesionales para crear contenido
+            dinámico, optimizado y visualmente atractivo para cualquier plataforma.
+        </p>
+
+    </div>
+
+    <div class="software-grid">
+
+        <div class="software-item">
+
+            <img src="img/premiere.png" alt="Premiere">
+
+            <h3>Premiere Pro</h3>
+
+        </div>
+
+        <div class="software-item">
+
+            <img src="img/after.png" alt="After Effects">
+
+            <h3>After Effects</h3>
+
+        </div>
+
+        <div class="software-item">
+
+            <img src="img/capcut-icon.png" alt="CapCut">
+
+            <h3>CapCut</h3>
+
+        </div>
+
+    </div>
+
+</section>
+    <section class="contact-section" id="contact">
+
+    <div class="contact-container">
+
+        <div class="contact-left">
+
+            <span class="section-badge">
+                Contacto
+            </span>
+
+            <h2>¿Listo para crear algo increíble?</h2>
+
+            <p>
+                Contame sobre tu proyecto. Cuanta más información me des,
+                mejor podré ayudarte a conseguir el resultado que buscás.
+            </p>
+
+            <div class="contact-info">
+
+                <div class="info-card">
+                    <span>⚡</span>
+                    <p>Respuesta en pocas horas.</p>
+                </div>
+
+                <div class="info-card">
+                    <span>🎬</span>
+                    <p>Edición para Reels, Shorts y YouTube.</p>
+                </div>
+
             </div>
+
         </div>
-    </main>
 
-    <!-- <footer class="glasshaven-footer glass-panel scroll-animate">
-        <div class="container-premium footer-flex-box">
-            <p class="f-logo">profesor<span>.virtual</span></p>
-            <p class="f-copy">&copy; 2026 - Aula Virtual Desarrollada con Cloudflare Pages. Todos los derechos reservados.</p>
+
+        <div class="contact-right">
+
+            <div class="contact-card">
+
+                <h3>Enviar mensaje</h3>
+
+                <label>Tu mensaje</label>
+
+                <textarea
+                    id="wsp-message"
+                    rows="7"
+                    placeholder="Hola Luciano, vi tu portfolio y me interesa trabajar con vos..."
+                ></textarea>
+
+                <button class="btn-send" onclick="enviarWhatsApp()">
+
+                    Enviar por WhatsApp →
+
+                </button>
+
+            </div>
+
         </div>
-    </footer> -->
 
-    <button class="btn-abrir-carrito-flotante" onclick="alternarCarrito()">
-        🛒 <span id="contador-recuento" style="display: none;">0</span>
-    </button>
+    </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const paneles = document.querySelectorAll('.scroll-animate');
-            const observerOptions = { root: null, rootMargin: "0px", threshold: 0.12 };
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            paneles.forEach(panel => observer.observe(panel));
-        });
-    </script>
+</section>
+
 </body>
 </html>
